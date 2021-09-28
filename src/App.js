@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import './App.css';
 
 import {gsap,Power3} from 'gsap'
@@ -9,6 +9,34 @@ function App() {
   let circleRed = useRef(null)
   let circleBlue = useRef(null)
 
+  const [expand, setExpand] = useState(false);
+
+  const handleExpand = () => {
+    gsap.to(
+      circleRed,
+      {
+        duration: .8,
+        width: 200,
+        height: 200,
+        ease: Power3.easeOut
+      }
+    )
+    setExpand(true);
+  }
+  
+  const handleShrink = () => {
+    gsap.to(
+      circleRed,
+      {
+        duration: .8,
+        width: 75,
+        height: 75,
+        ease: Power3.easeOut
+      }
+    )
+      setExpand(false);
+    }
+
   useEffect(() => {
     gsap.to(
       app,
@@ -17,35 +45,6 @@ function App() {
         css: {visibility: 'visible'}
       }
     );
-    // gsap.from(
-    //   circle,
-    //   {
-    //     duration: .9,
-    //     opacity: 0,
-    //     x: 40,
-    //     ease: Power3.easeOut,
-    //   }
-    //   );
-    //   gsap.from(
-    //     circleRed,
-    //     {
-    //       duration: .9,
-    //       opacity: 0,
-    //       x: 40,
-    //       ease: Power3.easeOut,
-    //       delay: .2
-    //   }
-    // );
-    // gsap.from(
-    //   circleBlue,
-    //   {
-    //     duration: .9,
-    //     opacity: 0,
-    //     x: 40,
-    //     ease: Power3.easeOut,
-    //     delay: .4
-    //   }
-    // );
     gsap.from(
       [circle, circleRed, circleBlue],
       {
@@ -63,7 +62,7 @@ function App() {
       <header className="App-header">
        <div className="circle-container">
           <div className="circle" ref={el => {circle = el}}></div>
-          <div className="circle red" ref={el => {circleRed = el}}></div>
+          <div className="circle red" ref={el => {circleRed = el}} onClick={expand !== true ? handleExpand : handleShrink}></div>
           <div className="circle blue" ref={el => {circleBlue = el}}></div>
        </div>
       </header>
