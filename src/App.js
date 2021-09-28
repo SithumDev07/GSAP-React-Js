@@ -17,35 +17,45 @@ function App() {
         css: {visibility: 'visible'}
       }
     );
+    // gsap.from(
+    //   circle,
+    //   {
+    //     duration: .9,
+    //     opacity: 0,
+    //     x: 40,
+    //     ease: Power3.easeOut,
+    //   }
+    //   );
+    //   gsap.from(
+    //     circleRed,
+    //     {
+    //       duration: .9,
+    //       opacity: 0,
+    //       x: 40,
+    //       ease: Power3.easeOut,
+    //       delay: .2
+    //   }
+    // );
+    // gsap.from(
+    //   circleBlue,
+    //   {
+    //     duration: .9,
+    //     opacity: 0,
+    //     x: 40,
+    //     ease: Power3.easeOut,
+    //     delay: .4
+    //   }
+    // );
     gsap.from(
-      circle,
+      [circle, circleRed, circleBlue],
       {
         duration: .9,
         opacity: 0,
         x: 40,
         ease: Power3.easeOut,
-      }
-      );
-      gsap.from(
-        circleRed,
-        {
-          duration: .9,
-          opacity: 0,
-          x: 40,
-          ease: Power3.easeOut,
-          delay: .2
-      }
-    );
-    gsap.from(
-      circleBlue,
-      {
-        duration: .9,
-        opacity: 0,
-        x: 40,
-        ease: Power3.easeOut,
-        delay: .4
-      }
-    );
+        stagger: .2
+      },
+    )
   }, []);
 
   return (
