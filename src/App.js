@@ -1,71 +1,48 @@
 import React, {useRef, useEffect, useState} from 'react';
 import './App.css';
 
+import "./App.scss";
+
 import {gsap,Power3} from 'gsap'
 
+const testimonials = [
+  {
+    name: "Sithum Basnayake",
+    title: "Entrepreneur",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2VvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    quote: "Keep Hustle!"
+  },
+  {
+    name: "Apoorvi Pahanya",
+    title: "Self Thought Artist",
+    image: "https://images.unsplash.com/photo-1611244419377-b0a760c19719?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGFydGlzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    quote: "Dreams really keep awake people."
+  },
+  {
+    name: "Senorita Bae",
+    title: "Mentor",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2VvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    quote: "The outstanding momements in out lives are just miracles."
+  },
+]
+
 function App() {
-  let app = useRef(null);
-  let circle = useRef(null)
-  let circleRed = useRef(null)
-  let circleBlue = useRef(null)
 
-  const [expand, setExpand] = useState(false);
+  let imageList = useRef(null);
+  let testimonialList = useRef(null);
+  const IMAGE_WIDTH = 340;
 
-  const handleExpand = () => {
-    gsap.to(
-      circleRed,
-      {
-        duration: .8,
-        width: 200,
-        height: 200,
-        ease: Power3.easeOut
-      }
-    )
-    setExpand(true);
-  }
-  
-  const handleShrink = () => {
-    gsap.to(
-      circleRed,
-      {
-        duration: .8,
-        width: 75,
-        height: 75,
-        ease: Power3.easeOut
-      }
-    )
-      setExpand(false);
-    }
-
-  useEffect(() => {
-    gsap.to(
-      app,
-      {
-        duration: 0,
-        css: {visibility: 'visible'}
-      }
-    );
-    gsap.from(
-      [circle, circleRed, circleBlue],
-      {
-        duration: .9,
-        opacity: 0,
-        x: 40,
-        ease: Power3.easeOut,
-        stagger: .2
-      },
-    )
-  }, []);
+  const [image, setImage] = useState({
+    isActive: true,
+    isActive2: true,
+    isActive3: true
+  })
 
   return (
-    <div className="App" ref={el => {app = el}}>
-      <header className="App-header">
-       <div className="circle-container">
-          <div className="circle" ref={el => {circle = el}}></div>
-          <div className="circle red" ref={el => {circleRed = el}} onClick={expand !== true ? handleExpand : handleShrink}></div>
-          <div className="circle blue" ref={el => {circleBlue = el}}></div>
-       </div>
-      </header>
+    <div className="testimonial-section">
+      <div className="testimonial-container">
+        
+      </div>
     </div>
   );
 }
