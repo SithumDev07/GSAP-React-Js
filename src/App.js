@@ -1,11 +1,19 @@
+import React, {useRef, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// import {Power3} from 'gsap'
+
 function App() {
+  let logoItem = useRef();
+
+  useEffect(() => {
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img ref={element => {logoItem = element}} src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
